@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pin Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="pin-generator half-width">
+                    <input class="form-control" type="text" id="pinDisplay">
+     
+        <button class="generate-btn" onclick="randomValue()">Generate Pin</button>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="input-section half-width">
+                    <input class="form-control" type="text"id="displayVal">
+                    <div class="numbers">
+                        <div class="calc-body">
+                            <div class="calc-button-row">
+                              <div class="button" onclick="number(7)">7</div>
+                              <div class="button" onclick="number(8)">8</div>
+                              <div class="button"onclick="number(9)">9</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button"onclick="number(4)">4</div>
+                              <div class="button"onclick="number(5)">5</div>
+                              <div class="button"onclick="number(6)">6</div>
+                            </div>
+                            <div class="calc-button-row">
+                              <div class="button"onclick="number(1)">1</div>
+                              <div class="button"onclick="number(2)">2</div>
+                              <div class="button"onclick="number(3)">3</div>
+                            </div>
+                            <div class="calc-button-row">
+                                <div class="button" onclick="backspace()"><</div>
+                                <div class="button"onclick="number(0)">0</div>
+                                <div class="button" onclick="clearall()">C</div>
+                            </div>
+                            <div>
+                                <button type="submit" class="submit-btn"id="submitBtn">Submit</button>
+                                <p class="action-left">3 try left</p>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="notify-section" >
+            <p class="notify" id="hidecross">❌ Pin Didn't Match, Please try again</p>
+            <p class="notify" id="hideTikmark">✅ Pin Matched... Secret door is opening for you</p>
+        </div>
+    </div>
+    <script>
+     function randomValue(){
+
+                     const randomInput=Math.random(10)
+                   const  randomnumber=randomInput.toFixed(4);
+                   const newValue=randomnumber.substring(8,2);
+                   document.getElementById("pinDisplay").value=newValue
+
+
+     }
+
+
+
+        function number(num){
+
+       document.getElementById('displayVal').value=document.getElementById('displayVal').value+num;
+
+		
+
+}
+
+function clearall(){
+
+    document.getElementById('displayVal').value=""
+}
+
+
+function backspace(){
+document.getElementById('displayVal').value=""
+
+}
+
+
+const submitBtn=document.getElementById('submitBtn');
+
+submitBtn.addEventListener('click',function(){
+
+    
+    if (newValue=displayVal){
+        var notify1 =document.getElementById("hidecross");
+        notify1.style.display="block";
+    }
+
+
+    else{
+           var notify2=document.getElementById("hidecTikmark");
+           notify2.style.display="block";
+           
+           }
+        
+})
+
+
+    
+    
+
+
+
+// Alert area display//
+
+const hideCross=document.getElementById('hidecross');
+hideCross.style.display="none";
+
+
+const hideTikmark=document.getElementById('hideTikmark');
+hideTikmark.style.display="none";
+
+
+
+    </script>
+</body>
+</html>
